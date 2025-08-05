@@ -74,6 +74,7 @@ npm run build
 ```bash
 # Serve the production build locally
 npx serve dist
+npm run preview
 
 # This will serve your built application at http://localhost:3000
 ```
