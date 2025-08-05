@@ -144,8 +144,120 @@ The `dist` folder contains the production-ready files that can be deployed to an
 
 - **Netlify**: Drag and drop the `dist` folder
 - **Vercel**: Connect your repository and it will auto-deploy
-- **GitHub Pages**: Upload the `dist` contents to the `gh-pages` branch
+- **GitHub Pages**: See detailed steps below
 - **AWS S3**: Upload the `dist` contents to an S3 bucket
+
+### GitHub Pages Deployment
+
+#### Method 1: Using GitHub Actions (Recommended)
+
+1. **Create GitHub Actions workflow**:
+   Create `.github/workflows/deploy.yml` in your repository:
+
+   ```yaml
+   name: Deploy to GitHub Pages
+
+   on:
+     push:
+       branches: [ main ]
+     workflow_dispatch:
+
+   jobs:
+     build-and-deploy:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Checkout
+           uses: actions/checkout@v4
+
+         - name: Setup Node.js
+           uses: actions/setup-node@v4
+           with:
+             node-version: '18'
+
+         - name: Install dependencies
+           run: npm ci
+
+         - name: Build
+           run: npm run build
+
+         - name: Deploy to GitHub Pages
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             publish_dir: ./dist
+   ```
+
+2. **Configure GitHub Pages**:
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under **Source**, select **Deploy from a branch**
+   - Choose **gh-pages** branch and **/(root)** folder
+   - Click **Save**
+
+3. **Push your code**:
+   ```bash
+   git add .
+   git commit -m "Add GitHub Pages deployment workflow"
+   git push origin main
+   ```
+
+#### Method 2: Manual Deployment
+
+1. **Build your project**:
+   ```bash
+   npm run build
+   ```
+
+2. **Install gh-pages package**:
+   ```bash
+   npm install --save-dev gh-pages
+   ```
+
+3. **Add deployment scripts** to `package.json`:
+   ```json
+   {
+     "scripts": {
+       "predeploy": "npm run build",
+       "deploy": "gh-pages -d dist"
+     }
+   }
+   ```
+
+4. **Deploy to GitHub Pages**:
+   ```bash
+   npm run deploy
+   ```
+
+5. **Configure GitHub Pages** (same as Method 1, step 2)
+
+#### Method 3: Using WSL (if on Windows)
+
+```bash
+# Switch to WSL
+wsl
+
+# Navigate to project
+cd /home/liber/Dev/my_portfolio_website
+
+# Build and deploy
+npm run build
+npm run deploy
+```
+
+#### Important Notes
+
+- **Repository Settings**: Ensure your repository is public or you have GitHub Pro for private repositories
+- **Branch Name**: The deployment branch is typically `gh-pages` or `main`
+- **Custom Domain**: You can add a custom domain in GitHub Pages settings
+- **HTTPS**: GitHub Pages automatically provides SSL certificates
+- **Build Output**: Make sure your `vite.config.ts` has the correct base URL:
+
+  ```typescript
+  export default defineConfig({
+    base: process.env.NODE_ENV === 'production' ? '/your-repo-name/' : '/',
+    // ... other config
+  })
+  ```
 
 ## Contributing
 
