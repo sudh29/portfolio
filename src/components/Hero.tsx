@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react'
 const Hero: React.FC = () => {
   const [currentText, setCurrentText] = useState(0)
   const texts = [
-    "Full Stack Developer",
-    "React Specialist", 
-    "TypeScript Expert",
-    "Problem Solver"
+    "Technical Lead",
+    "Software Engineer", 
+    "AI/ML Specialist",
+    "Full-Stack Developer"
   ]
 
   useEffect(() => {
@@ -36,8 +36,8 @@ const Hero: React.FC = () => {
               I'm a <span className="animated-text">{texts[currentText]}</span>
             </h2>
             <p className="hero-description">
-              Passionate about creating beautiful, functional, and user-friendly web applications. 
-              I love turning ideas into reality through code.
+              Software Engineer and Technical Lead with 7+ years of experience building full-stack and AI-driven solutions across healthcare,
+              telecom, and manufacturing. Skilled in leading teams, automating workflows, and deploying scalable platforms.
             </p>
             <div className="hero-buttons">
               <button 
@@ -63,11 +63,11 @@ const Hero: React.FC = () => {
               </div>
               <div className="profile-info">
                 <h3>Sudhanshu Chaudhary</h3>
-                <p>Full Stack Developer</p>
+                <p>Technical Lead</p>
                 <div className="tech-stack">
-                  <span>React</span>
-                  <span>TypeScript</span>
-                  <span>Node.js</span>
+                  <span>Python</span>
+                  <span>AI/ML</span>
+                  <span>Full-Stack</span>
                 </div>
               </div>
             </div>

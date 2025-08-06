@@ -8,29 +8,41 @@ interface Skill {
 
 const Skills: React.FC = () => {
   const skills: Skill[] = [
-    // Frontend
-    { name: 'React', level: 90, category: 'Frontend' },
-    { name: 'TypeScript', level: 85, category: 'Frontend' },
-    { name: 'JavaScript', level: 90, category: 'Frontend' },
-    { name: 'HTML/CSS', level: 95, category: 'Frontend' },
-    { name: 'Tailwind CSS', level: 80, category: 'Frontend' },
+    // Programming Languages
+    { name: 'Python', level: 95, category: 'Programming Languages' },
+    { name: 'C/C++', level: 85, category: 'Programming Languages' },
+    { name: 'SQL', level: 90, category: 'Programming Languages' },
+    { name: 'Shell Scripting', level: 80, category: 'Programming Languages' },
+    { name: 'Mojo', level: 75, category: 'Programming Languages' },
     
-    // Backend
-    { name: 'Node.js', level: 85, category: 'Backend' },
-    { name: 'Express.js', level: 80, category: 'Backend' },
-    { name: 'Python', level: 75, category: 'Backend' },
-    { name: 'PostgreSQL', level: 70, category: 'Backend' },
-    { name: 'MongoDB', level: 75, category: 'Backend' },
+    // Frameworks
+    { name: 'FastAPI', level: 90, category: 'Frameworks' },
+    { name: 'Django', level: 85, category: 'Frameworks' },
+    { name: 'Flask', level: 80, category: 'Frameworks' },
     
-    // Tools & Others
-    { name: 'Git', level: 85, category: 'Tools' },
-    { name: 'Docker', level: 70, category: 'Tools' },
-    { name: 'AWS', level: 65, category: 'Tools' },
-    { name: 'Figma', level: 75, category: 'Tools' },
-    { name: 'Agile/Scrum', level: 80, category: 'Tools' }
+    // Libraries & ML
+    { name: 'NumPy', level: 90, category: 'Libraries & ML' },
+    { name: 'Pandas', level: 95, category: 'Libraries & ML' },
+    { name: 'Polars', level: 85, category: 'Libraries & ML' },
+    { name: 'OpenCV', level: 80, category: 'Libraries & ML' },
+    { name: 'Scikit-learn', level: 85, category: 'Libraries & ML' },
+    { name: 'TensorFlow', level: 80, category: 'Libraries & ML' },
+    
+    // Tools & Technologies
+    { name: 'Git', level: 90, category: 'Tools & Technologies' },
+    { name: 'Docker', level: 85, category: 'Tools & Technologies' },
+    { name: 'Kubernetes', level: 75, category: 'Tools & Technologies' },
+    { name: 'AWS', level: 80, category: 'Tools & Technologies' },
+    { name: 'MongoDB', level: 85, category: 'Tools & Technologies' },
+    { name: 'PostgreSQL', level: 80, category: 'Tools & Technologies' },
+    { name: 'Redis', level: 75, category: 'Tools & Technologies' },
+    { name: 'Selenium', level: 85, category: 'Tools & Technologies' },
+    { name: 'Linux', level: 90, category: 'Tools & Technologies' },
+    { name: 'Jira', level: 85, category: 'Tools & Technologies' },
+    { name: 'REST APIs', level: 90, category: 'Tools & Technologies' }
   ]
 
-  const categories = ['Frontend', 'Backend', 'Tools']
+  const categories = ['Programming Languages', 'Frameworks', 'Libraries & ML', 'Tools & Technologies']
 
   return (
     <section id="skills" className="skills">
@@ -68,16 +80,16 @@ const Skills: React.FC = () => {
         
         <div className="skills-summary">
           <div className="summary-card">
-            <h4>Frontend Development</h4>
-            <p>Building responsive and interactive user interfaces with modern frameworks and tools.</p>
+            <h4>AI/ML & Data Engineering</h4>
+            <p>Building intelligent systems with Python, TensorFlow, and advanced data processing pipelines for scalable solutions.</p>
           </div>
           <div className="summary-card">
-            <h4>Backend Development</h4>
-            <p>Creating robust server-side applications and APIs with scalable architectures.</p>
+            <h4>Full-Stack Development</h4>
+            <p>Creating robust web applications and APIs using modern frameworks and cloud-native technologies.</p>
           </div>
           <div className="summary-card">
-            <h4>DevOps & Tools</h4>
-            <p>Deploying applications and managing development workflows efficiently.</p>
+            <h4>DevOps & Automation</h4>
+            <p>Deploying applications with Docker/Kubernetes and automating workflows for improved efficiency.</p>
           </div>
         </div>
       </div>

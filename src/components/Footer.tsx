@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <div className="footer-content">
           <div className="footer-section">
             <h3>Sudhanshu Chaudhary</h3>
-            <p>Full Stack Developer passionate about creating amazing web experiences.</p>
+            <p>Technical Lead with 7+ years of experience building AI-driven solutions and leading development teams.</p>
           </div>
           
           <div className="footer-section">
@@ -29,10 +29,9 @@ const Footer: React.FC = () => {
           <div className="footer-section">
             <h4>Connect</h4>
             <div className="social-links">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-              <a href="mailto:sudhanshu@example.com">Email</a>
+              <a href="https://www.github.com/sudh29" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/sudh29" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="mailto:sudhanshuiet15@gmail.com">Email</a>
             </div>
           </div>
         </div>
