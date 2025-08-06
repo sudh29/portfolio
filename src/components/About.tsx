@@ -13,26 +13,28 @@ const About: React.FC = () => {
           <div className="about-text">
             <h3>Who I Am</h3>
             <p>
-              I'm a passionate Full Stack Developer with a strong foundation in modern web technologies. 
-              I enjoy creating software that solves real-world problems and provides excellent user experiences.
+              I'm a Software Engineer and Technical Lead with 7+ years of experience building full-stack and AI-driven solutions 
+              across healthcare, telecom, and manufacturing. I specialize in leading teams, automating workflows, and deploying 
+              scalable platforms that drive business value.
             </p>
             <p>
-              With expertise in React, TypeScript, Node.js, and various other technologies, 
-              I build scalable and maintainable applications that make a difference.
+              With expertise in Python, AI/ML, data engineering, and full-stack development, I build solutions that solve 
+              real-world problems and deliver measurable impact. I'm passionate about applying strong technical skills to 
+              deliver high-impact, business-aligned software solutions.
             </p>
             
             <div className="about-stats">
               <div className="stat">
-                <h4>2+</h4>
+                <h4>7+</h4>
                 <p>Years Experience</p>
               </div>
               <div className="stat">
                 <h4>20+</h4>
-                <p>Projects Completed</p>
+                <p>Projects Led</p>
               </div>
               <div className="stat">
-                <h4>15+</h4>
-                <p>Happy Clients</p>
+                <h4>100%</h4>
+                <p>Automation Success</p>
               </div>
             </div>
           </div>
@@ -44,19 +46,37 @@ const About: React.FC = () => {
                 <div className="timeline-item">
                   <div className="timeline-marker"></div>
                   <div className="timeline-content">
-                    <h4>Full Stack Developer</h4>
-                    <p className="company">Tech Company</p>
-                    <p className="duration">2022 - Present</p>
-                    <p>Developed and maintained web applications using React, Node.js, and TypeScript.</p>
+                    <h4>Technical Lead</h4>
+                    <p className="company">Jorie AI</p>
+                    <p className="duration">JUL 2024 — Present, Noida, India</p>
+                    <p>Leading development of next-generation RCM automation platform, managing 20+ developers, and delivering end-to-end automation solutions for healthcare providers.</p>
                   </div>
                 </div>
                 <div className="timeline-item">
                   <div className="timeline-marker"></div>
                   <div className="timeline-content">
-                    <h4>Frontend Developer</h4>
-                    <p className="company">Startup</p>
-                    <p className="duration">2021 - 2022</p>
-                    <p>Built responsive user interfaces and implemented modern design patterns.</p>
+                    <h4>Senior Software Engineer</h4>
+                    <p className="company">HCLSoftware</p>
+                    <p className="duration">JUL 2021 — JUL 2024, Noida, India</p>
+                    <p>Pioneered 5G Massive MIMO features, developed energy optimization applications, and led various modules within the ANA platform achieving significant cost savings.</p>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-marker"></div>
+                  <div className="timeline-content">
+                    <h4>Junior Telecom Officer</h4>
+                    <p className="company">BSNL</p>
+                    <p className="duration">NOV 2017 — AUG 2019, Rajkot, India</p>
+                    <p>Automated remote configurations and fault detection, reducing network downtime by 30% and increasing revenue by 25% through operational efficiency.</p>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-marker"></div>
+                  <div className="timeline-content">
+                    <h4>Project Engineer</h4>
+                    <p className="company">WIPRO</p>
+                    <p className="duration">SEP 2015 — SEP 2016, Pune, India</p>
+                    <p>Developed ETL pipelines and web applications for Outokumpu's Global Business Intelligence team, achieving 15% increase in returns and 20% cost reduction.</p>
                   </div>
                 </div>
               </div>
@@ -65,9 +85,22 @@ const About: React.FC = () => {
             <div className="detail-section">
               <h3>Education</h3>
               <div className="education-item">
-                <h4>Bachelor's in Computer Science</h4>
-                <p className="institution">University Name</p>
-                <p className="year">2018 - 2022</p>
+                <h4>Master of Technology, Telecom Technology and Management</h4>
+                <p className="institution">Indian Institute of Technology, Delhi</p>
+                <p className="year">2019 — 2021</p>
+              </div>
+              <div className="education-item">
+                <h4>Bachelor of Technology (Hons.), Electronics and Instrumentation</h4>
+                <p className="institution">Institute of Engineering and Technology, Lucknow</p>
+                <p className="year">2011 — 2015</p>
+              </div>
+            </div>
+
+            <div className="detail-section">
+              <h3>Achievements</h3>
+              <div className="achievement-item">
+                <h4>MHRD Scholarship</h4>
+                <p>Awarded scholarship for securing AIR 95 in GATE-2019 (IN)</p>
               </div>
             </div>
           </div>

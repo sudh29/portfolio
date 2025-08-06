@@ -9,6 +9,7 @@ const Contact: React.FC = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -21,42 +22,55 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    })
-    setIsSubmitting(false)
-    
-    // Show success message (you can implement this with a toast notification)
-    alert('Message sent successfully!')
+    try {
+      // Create mailto link with form data
+      const mailtoLink = `mailto:sudhanshuiet15@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+        `Hello Sudhanshu,\n\nYou have received a new message from your portfolio website:\n\nName: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}\n\nBest regards,\nYour Portfolio Website`
+      )}`
+      
+      // Open default email client
+      window.location.href = mailtoLink
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      })
+      
+      setSubmitStatus('success')
+      
+      // Show success message
+      setTimeout(() => {
+        alert('Your email client should open with a pre-filled message. If it doesn\'t open automatically, please send your message directly to sudhanshuiet15@gmail.com')
+      }, 100)
+      
+    } catch (error) {
+      console.error('Error opening email client:', error)
+      setSubmitStatus('error')
+      alert('Sorry, there was an error. Please send your message directly to sudhanshuiet15@gmail.com')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com',
+      url: 'https://www.github.com/sudh29',
       icon: '📱'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com',
+      url: 'https://www.linkedin.com/in/sudh29',
       icon: '💼'
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com',
-      icon: '🐦'
-    },
-    {
       name: 'Email',
-      url: 'mailto:sudhanshu@example.com',
+      url: 'mailto:sudhanshuiet15@gmail.com',
       icon: '📧'
     }
   ]
@@ -82,7 +96,7 @@ const Contact: React.FC = () => {
                 <span className="contact-icon">📍</span>
                 <div>
                   <h4>Location</h4>
-                  <p>Remote / Worldwide</p>
+                  <p>Ghaziabad, India</p>
                 </div>
               </div>
               
@@ -90,7 +104,7 @@ const Contact: React.FC = () => {
                 <span className="contact-icon">📧</span>
                 <div>
                   <h4>Email</h4>
-                  <p>sudhanshu@example.com</p>
+                  <p>sudhanshuiet15@gmail.com</p>
                 </div>
               </div>
               
@@ -98,7 +112,7 @@ const Contact: React.FC = () => {
                 <span className="contact-icon">📱</span>
                 <div>
                   <h4>Phone</h4>
-                  <p>+1 (555) 123-4567</p>
+                  <p>(+91) 9453631801</p>
                 </div>
               </div>
             </div>
@@ -174,9 +188,29 @@ const Contact: React.FC = () => {
                 className="btn btn-primary"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Opening Email...' : 'Send Message'}
               </button>
+              
+              {submitStatus === 'success' && (
+                <div className="success-message">
+                  ✅ Email client opened! Your message is ready to send.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="error-message">
+                  ❌ Please send your message directly to sudhanshuiet15@gmail.com
+                </div>
+              )}
             </form>
+            
+            <div className="contact-note">
+              <p>
+                <strong>Note:</strong> This will open your default email client with a pre-filled message. 
+                If your email client doesn't open automatically, please send your message directly to 
+                <a href="mailto:sudhanshuiet15@gmail.com"> sudhanshuiet15@gmail.com</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
