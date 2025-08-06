@@ -1,53 +1,71 @@
-# My Portfolio Website
+# Portfolio Website
 
-A modern portfolio website built with React, TypeScript, and Vite. This project showcases my skills, projects, and contact information in a responsive and beautiful design.
+A modern, responsive portfolio website built with React 19, TypeScript, and Vite. This project showcases professional skills, projects, and contact information with a clean, modern design.
 
-## Features
+## 🚀 Features
 
-- **Modern Tech Stack**: React 18 with TypeScript for type safety
-- **Fast Development**: Vite for lightning-fast HMR and builds
+- **Modern Tech Stack**: React 19 with TypeScript for enhanced type safety
+- **Fast Development**: Vite for lightning-fast Hot Module Replacement (HMR)
 - **Responsive Design**: Mobile-first approach with modern CSS
-- **Component-Based**: Modular components for easy maintenance
+- **Component-Based Architecture**: Modular components for easy maintenance
 - **Performance Optimized**: Production-ready builds with code splitting
+- **SEO Friendly**: Optimized for search engines
+- **Accessibility**: WCAG compliant design
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: React 18 + TypeScript
-- **Build Tool**: Vite
+- **Frontend Framework**: React 19 + TypeScript
+- **Build Tool**: Vite 7.0.6
 - **Styling**: CSS3 with modern features
-- **Linting**: ESLint with TypeScript support
+- **Linting**: ESLint 9.30.1 with TypeScript support
 - **Development**: Hot Module Replacement (HMR)
+- **Deployment**: GitHub Pages with gh-pages
 
-## Getting Started
+## 📋 Prerequisites
 
-### Prerequisites
+Before running this project, ensure you have the following installed:
 
-- Node.js (version 16 or higher)
-- npm or yarn package manager
+- **Node.js**: Version 18 or higher (recommended: 20.x)
+- **npm**: Version 9 or higher
+- **Git**: For version control
 
-### Installation
+### Check Your Versions
 
-1. **Clone the repository** (if applicable):
-   ```bash
-   git clone <repository-url>
-   cd my_portfolio_website
-   ```
+```bash
+node --version
+npm --version
+git --version
+```
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+## 🚀 Quick Start
 
-3. **Start development server**:
-   ```bash
-   npm run dev
-   ```
+### 1. Clone the Repository
 
-   The application will be available at `http://localhost:5173`
+```bash
+# Clone the repository
+git clone https://github.com/sudh29/portfolio.git
+cd portfolio
+```
 
-## Available Scripts
+### 2. Install Dependencies
 
-### Development
+```bash
+# Install all dependencies
+npm install
+```
+
+### 3. Start Development Server
+
+```bash
+# Start the development server
+npm run dev
+```
+
+The application will automatically open in your browser at `http://localhost:3000`
+
+## 📜 Available Scripts
+
+### Development Commands
 
 ```bash
 # Start development server with hot reload
@@ -58,7 +76,7 @@ wsl
 npm run dev
 ```
 
-### Building
+### Build Commands
 
 ```bash
 # Build for production
@@ -67,209 +85,321 @@ npm run build
 # Build with WSL (if on Windows)
 wsl
 npm run build
-```
 
-### Preview Production Build
-
-```bash
-# Serve the production build locally
-npx serve dist
+# Preview production build locally
 npm run preview
-
-# This will serve your built application at http://localhost:3000
 ```
 
-### Code Quality
+### Code Quality Commands
 
 ```bash
-# Run TypeScript type checking
-npm run type-check
-
-# Run ESLint
+# Run ESLint to check code quality
 npm run lint
 
 # Fix ESLint issues automatically
 npm run lint:fix
+
+# TypeScript type checking
+npx tsc --noEmit
 ```
 
-## Project Structure
-
-```
-src/
-├── components/          # React components
-│   ├── Header.tsx     # Navigation header
-│   ├── Hero.tsx       # Hero section
-│   ├── About.tsx      # About section
-│   ├── Skills.tsx     # Skills showcase
-│   ├── Projects.tsx   # Projects gallery
-│   ├── Contact.tsx    # Contact form
-│   └── Footer.tsx     # Footer component
-├── assets/            # Static assets
-├── App.tsx           # Main application component
-├── App.css           # Main styles
-├── main.tsx          # Application entry point
-└── index.css         # Global styles
-```
-
-## Development Workflow
-
-1. **Start Development**: Run `npm run dev` to start the development server
-2. **Make Changes**: Edit components in `src/components/`
-3. **Build for Production**: Run `npm run build` to create optimized build
-4. **Preview Build**: Run `npx serve dist` to preview the production build
-5. **Deploy**: Upload the `dist` folder to your hosting provider
-
-## Troubleshooting
-
-### TypeScript Errors
-
-If you encounter TypeScript errors like "React is declared but never read":
-
-1. Remove unused imports:
-   ```typescript
-   // Remove this if not using React directly
-   import React from 'react'
-   ```
-
-2. Modern React with TypeScript doesn't require explicit React imports for JSX
-
-### Build Issues
-
-- Ensure all dependencies are installed: `npm install`
-- Clear node_modules and reinstall if needed: `rm -rf node_modules && npm install`
-- Check TypeScript configuration in `tsconfig.json`
-
-## Deployment
-
-The `dist` folder contains the production-ready files that can be deployed to any static hosting service:
-
-- **Netlify**: Drag and drop the `dist` folder
-- **Vercel**: Connect your repository and it will auto-deploy
-- **GitHub Pages**: See detailed steps below
-- **AWS S3**: Upload the `dist` contents to an S3 bucket
-
-### GitHub Pages Deployment
-
-#### Method 1: Using GitHub Actions (Recommended)
-
-1. **Create GitHub Actions workflow**:
-   Create `.github/workflows/deploy.yml` in your repository:
-
-   ```yaml
-   name: Deploy to GitHub Pages
-
-   on:
-     push:
-       branches: [ main ]
-     workflow_dispatch:
-
-   jobs:
-     build-and-deploy:
-       runs-on: ubuntu-latest
-       steps:
-         - name: Checkout
-           uses: actions/checkout@v4
-
-         - name: Setup Node.js
-           uses: actions/setup-node@v4
-           with:
-             node-version: '18'
-
-         - name: Install dependencies
-           run: npm ci
-
-         - name: Build
-           run: npm run build
-
-         - name: Deploy to GitHub Pages
-           uses: peaceiris/actions-gh-pages@v3
-           with:
-             github_token: ${{ secrets.GITHUB_TOKEN }}
-             publish_dir: ./dist
-   ```
-
-2. **Configure GitHub Pages**:
-   - Go to your repository on GitHub
-   - Navigate to **Settings** → **Pages**
-   - Under **Source**, select **Deploy from a branch**
-   - Choose **gh-pages** branch and **/(root)** folder
-   - Click **Save**
-
-3. **Push your code**:
-   ```bash
-   git add .
-   git commit -m "Add GitHub Pages deployment workflow"
-   git push origin main
-   ```
-
-#### Method 2: Manual Deployment
-
-1. **Build your project**:
-   ```bash
-   npm run build
-   ```
-
-2. **Install gh-pages package**:
-   ```bash
-   npm install --save-dev gh-pages
-   ```
-
-3. **Add deployment scripts** to `package.json`:
-   ```json
-   {
-     "scripts": {
-       "predeploy": "npm run build",
-       "deploy": "gh-pages -d dist"
-     }
-   }
-   ```
-
-4. **Deploy to GitHub Pages**:
-   ```bash
-   npm run deploy
-   ```
-
-5. **Configure GitHub Pages** (same as Method 1, step 2)
-
-#### Method 3: Using WSL (if on Windows)
+### Deployment Commands
 
 ```bash
-# Switch to WSL
+# Build and deploy to GitHub Pages
+npm run deploy
+
+# Deploy with WSL (if on Windows)
 wsl
-
-# Navigate to project
-cd /home/liber/Dev/my_portfolio_website
-
-# Build and deploy
-npm run build
 npm run deploy
 ```
 
-#### Important Notes
+## 🏗️ Project Structure
 
-- **Repository Settings**: Ensure your repository is public or you have GitHub Pro for private repositories
-- **Branch Name**: The deployment branch is typically `gh-pages` or `main`
-- **Custom Domain**: You can add a custom domain in GitHub Pages settings
-- **HTTPS**: GitHub Pages automatically provides SSL certificates
-- **Build Output**: Make sure your `vite.config.ts` has the correct base URL:
+```
+portfolio/
+├── public/                 # Static assets
+│   └── vite.svg
+├── src/
+│   ├── components/         # React components
+│   │   ├── Header.tsx     # Navigation header
+│   │   ├── Hero.tsx       # Hero section
+│   │   ├── About.tsx      # About section
+│   │   ├── Skills.tsx     # Skills showcase
+│   │   ├── Projects.tsx   # Projects gallery
+│   │   ├── Contact.tsx    # Contact form
+│   │   └── Footer.tsx     # Footer component
+│   ├── assets/            # Static assets
+│   │   └── react.svg
+│   ├── App.tsx           # Main application component
+│   ├── App.css           # Main styles
+│   ├── main.tsx          # Application entry point
+│   ├── index.css         # Global styles
+│   └── vite-env.d.ts     # Vite environment types
+├── package.json           # Dependencies and scripts
+├── vite.config.ts         # Vite configuration
+├── tsconfig.json          # TypeScript configuration
+├── eslint.config.js       # ESLint configuration
+└── README.md             # This file
+```
 
-  ```typescript
-  export default defineConfig({
-    base: process.env.NODE_ENV === 'production' ? '/your-repo-name/' : '/',
-    // ... other config
-  })
-  ```
+## 🔧 Development Workflow
 
-## Contributing
+### 1. Development Mode
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes
-4. Test the build: `npm run build`
-5. Commit your changes: `git commit -m 'Add feature'`
-6. Push to the branch: `git push origin feature-name`
-7. Submit a pull request
+```bash
+# Start development server
+npm run dev
+```
 
-## License
+**What happens:**
+- Vite starts a development server on `http://localhost:3000`
+- Hot Module Replacement (HMR) enables instant updates
+- TypeScript compilation happens on-the-fly
+- ESLint runs in watch mode
+
+### 2. Making Changes
+
+1. **Edit Components**: Modify files in `src/components/`
+2. **Add Styles**: Update CSS files in `src/`
+3. **Test Changes**: Browser automatically refreshes
+4. **Check Console**: Monitor for any errors
+
+### 3. Building for Production
+
+```bash
+# Create optimized production build
+npm run build
+```
+
+**What happens:**
+- TypeScript compilation with strict checking
+- Vite creates optimized bundle in `dist/` folder
+- Code splitting and tree shaking applied
+- Assets optimized and minified
+
+### 4. Preview Production Build
+
+```bash
+# Serve production build locally
+npm run preview
+```
+
+This serves the built application at `http://localhost:4173`
+
+## 🐛 Debugging Guide
+
+### Common Issues and Solutions
+
+#### 1. TypeScript Errors
+
+**Problem**: TypeScript compilation errors
+```bash
+# Check TypeScript errors
+npx tsc --noEmit
+```
+
+**Solutions**:
+- Remove unused imports
+- Fix type annotations
+- Update component props interfaces
+
+#### 2. ESLint Errors
+
+**Problem**: Code quality issues
+```bash
+# Check ESLint errors
+npm run lint
+
+# Fix automatically
+npm run lint:fix
+```
+
+**Common Fixes**:
+- Remove unused variables
+- Fix import/export statements
+- Add missing dependencies to useEffect
+
+#### 3. Build Failures
+
+**Problem**: Production build fails
+```bash
+# Clear cache and rebuild
+rm -rf node_modules package-lock.json
+npm install
+npm run build
+```
+
+#### 4. Development Server Issues
+
+**Problem**: Server won't start
+```bash
+# Check if port is in use
+lsof -i :3000
+
+# Kill process using port
+kill -9 <PID>
+
+# Or use different port
+npm run dev -- --port 3001
+```
+
+#### 5. WSL-Specific Issues (Windows)
+
+**Problem**: Commands not working in WSL
+```bash
+# Ensure you're in WSL
+wsl
+
+# Navigate to project
+cd /home/liber/Dev/portfolio
+
+# Run commands
+npm run dev
+```
+
+### Debug Tools
+
+#### 1. Browser Developer Tools
+
+- **F12**: Open developer tools
+- **Console**: Check for JavaScript errors
+- **Network**: Monitor API calls and assets
+- **Elements**: Inspect DOM structure
+- **Sources**: Debug JavaScript code
+
+#### 2. React Developer Tools
+
+Install the React Developer Tools browser extension for:
+- Component tree inspection
+- Props and state debugging
+- Performance profiling
+
+#### 3. Vite Debug Mode
+
+```bash
+# Start with debug logging
+DEBUG=vite:* npm run dev
+```
+
+## 🚀 Deployment
+
+### GitHub Pages Deployment
+
+The project is configured for automatic deployment to GitHub Pages.
+
+#### Automatic Deployment
+
+1. **Push to Main Branch**:
+   ```bash
+   git add .
+   git commit -m "Update portfolio"
+   git push origin main
+   ```
+
+2. **GitHub Actions** (if configured):
+   - Automatic build and deployment on push
+   - Check Actions tab in GitHub repository
+
+#### Manual Deployment
+
+```bash
+# Build and deploy
+npm run deploy
+
+# Or step by step
+npm run build
+npx gh-pages -d dist
+```
+
+#### Deployment Configuration
+
+The project is configured with:
+- **Base URL**: `/portfolio/` (for GitHub Pages)
+- **Build Output**: `dist/` folder
+- **Deployment Branch**: `gh-pages`
+
+### Other Deployment Options
+
+#### Netlify
+1. Connect your GitHub repository
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+
+#### Vercel
+1. Import your GitHub repository
+2. Framework preset: Vite
+3. Build command: `npm run build`
+4. Output directory: `dist`
+
+#### AWS S3 + CloudFront
+1. Upload `dist/` contents to S3 bucket
+2. Configure CloudFront distribution
+3. Set up custom domain (optional)
+
+## 📝 Environment Configuration
+
+### Development Environment
+
+Create `.env.local` for local development:
+```env
+VITE_API_URL=http://localhost:3000
+VITE_DEBUG=true
+```
+
+### Production Environment
+
+Create `.env.production` for production:
+```env
+VITE_API_URL=https://your-api.com
+VITE_DEBUG=false
+```
+
+## 🤝 Contributing
+
+1. **Fork the repository**
+2. **Create a feature branch**:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make your changes**
+4. **Test the build**:
+   ```bash
+   npm run build
+   npm run lint
+   ```
+5. **Commit your changes**:
+   ```bash
+   git commit -m 'Add feature: description'
+   ```
+6. **Push to the branch**:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+7. **Submit a pull request**
+
+## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+## 📞 Support
+
+If you encounter any issues:
+
+1. **Check the troubleshooting section** above
+2. **Search existing issues** in the repository
+3. **Create a new issue** with detailed information:
+   - Operating system and Node.js version
+   - Steps to reproduce the issue
+   - Error messages and stack traces
+   - Browser and version (if applicable)
+
+## 🔗 Links
+
+- **Live Demo**: [Portfolio Website](https://sudh29.github.io/portfolio/)
+- **Repository**: [GitHub Repository](https://github.com/sudh29/portfolio)
+- **Issues**: [Report Issues](https://github.com/sudh29/portfolio/issues)
+
+---
+
+**Built with ❤️ using React, TypeScript, and Vite**
