@@ -1,79 +1,81 @@
-import React, { useState } from 'react'
+import emailjs from "emailjs-com";
+import React, { useState } from "react";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
-    
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    // Use environment variables for EmailJS keys
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      to_email: "sudhanshuiet@gmail.com",
+    };
+
     try {
-      // Create mailto link with form data
-      const mailtoLink = `mailto:sudhanshuiet15@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-        `Hello Sudhanshu,\n\nYou have received a new message from your portfolio website:\n\nName: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}\n\nBest regards,\nYour Portfolio Website`
-      )}`
-      
-      // Open default email client
-      window.location.href = mailtoLink
-      
-      // Reset form
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      })
-      
-      setSubmitStatus('success')
-      
-      // Show success message
-      setTimeout(() => {
-        alert('Your email client should open with a pre-filled message. If it doesn\'t open automatically, please send your message directly to sudhanshuiet15@gmail.com')
-      }, 100)
-      
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setSubmitStatus("success");
     } catch (error) {
-      console.error('Error opening email client:', error)
-      setSubmitStatus('error')
-      alert('Sorry, there was an error. Please send your message directly to sudhanshuiet15@gmail.com')
+      console.error("EmailJS error:", error);
+      setSubmitStatus("error");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const socialLinks = [
     {
-      name: 'GitHub',
-      url: 'https://www.github.com/sudh29',
-      icon: '📱'
+      name: "GitHub",
+      url: "https://www.github.com/sudh29",
+      icon: "📱",
     },
     {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/sudh29',
-      icon: '💼'
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/sudh29",
+      icon: "💼",
     },
     {
-      name: 'Email',
-      url: 'mailto:sudhanshuiet15@gmail.com',
-      icon: '📧'
-    }
-  ]
+      name: "Email",
+      url: "mailto:sudhanshuiet15@gmail.com",
+      icon: "📧",
+    },
+  ];
 
   return (
     <section id="contact" className="contact">
@@ -87,10 +89,11 @@ const Contact: React.FC = () => {
           <div className="contact-info">
             <h3>Let's Connect</h3>
             <p>
-              I'm always interested in hearing about new opportunities and exciting projects. 
-              Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              I'm always interested in hearing about new opportunities and
+              exciting projects. Whether you have a question or just want to say
+              hi, I'll try my best to get back to you!
             </p>
-            
+
             <div className="contact-details">
               <div className="contact-item">
                 <span className="contact-icon">📍</span>
@@ -99,7 +102,7 @@ const Contact: React.FC = () => {
                   <p>Ghaziabad, India</p>
                 </div>
               </div>
-              
+
               <div className="contact-item">
                 <span className="contact-icon">📧</span>
                 <div>
@@ -107,7 +110,7 @@ const Contact: React.FC = () => {
                   <p>sudhanshuiet15@gmail.com</p>
                 </div>
               </div>
-              
+
               <div className="contact-item">
                 <span className="contact-icon">📱</span>
                 <div>
@@ -120,7 +123,7 @@ const Contact: React.FC = () => {
             <div className="social-links">
               <h4>Follow Me</h4>
               <div className="social-grid">
-                {socialLinks.map(social => (
+                {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.url}
@@ -149,7 +152,7 @@ const Contact: React.FC = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <input
                   type="email"
@@ -160,7 +163,7 @@ const Contact: React.FC = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <input
                   type="text"
@@ -171,7 +174,7 @@ const Contact: React.FC = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <textarea
                   name="message"
@@ -182,40 +185,41 @@ const Contact: React.FC = () => {
                   required
                 ></textarea>
               </div>
-              
-              <button 
-                type="submit" 
+
+              <button
+                type="submit"
                 className="btn btn-primary"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Opening Email...' : 'Send Message'}
+                {isSubmitting ? "Opening Email..." : "Send Message"}
               </button>
-              
-              {submitStatus === 'success' && (
+
+              {submitStatus === "success" && (
                 <div className="success-message">
                   ✅ Email client opened! Your message is ready to send.
                 </div>
               )}
-              
-              {submitStatus === 'error' && (
+
+              {submitStatus === "error" && (
                 <div className="error-message">
-                  ❌ Please send your message directly to sudhanshuiet15@gmail.com
+                  ❌ Please send your message directly to
+                  sudhanshuiet15@gmail.com
                 </div>
               )}
             </form>
-            
+
             <div className="contact-note">
               <p>
-                <strong>Note:</strong> This will open your default email client with a pre-filled message. 
-                If your email client doesn't open automatically, please send your message directly to 
-                <a href="mailto:sudhanshuiet15@gmail.com"> sudhanshuiet15@gmail.com</a>
+                <strong>Note:</strong> Your message will be sent directly to{" "}
+                <b>sudhanshuiet@gmail.com</b> using EmailJS. No email client
+                required!
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact 
+export default Contact;
