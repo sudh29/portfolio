@@ -114,8 +114,7 @@ const Header: React.FC = () => {
           </nav>
 
           <div className="header-actions">
-            <ThemeToggle />
-            {isBlogPage ? (
+            {isBlogPage && (
               <button
                 type="button"
                 onClick={() => {
@@ -126,7 +125,9 @@ const Header: React.FC = () => {
               >
                 Blog
               </button>
-            ) : (
+            )}
+            <ThemeToggle />
+            {!isBlogPage && (
               <button
                 className={`mobile-menu-btn ${
                   isMobileMenuOpen ? "active" : ""
