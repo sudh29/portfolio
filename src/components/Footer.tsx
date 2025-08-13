@@ -35,20 +35,14 @@ const Footer: React.FC = () => {
           <div className="footer-section">
             <h4>Quick Links</h4>
             <ul className="footer-links">
-              <li><button onClick={() => handleNavClick('home')}>Home</button></li>
-              <li><button onClick={() => handleNavClick('about')}>About</button></li>
-              <li><button onClick={() => handleNavClick('projects')}>Projects</button></li>
-              <li><button onClick={() => handleNavClick('contact')}>Contact</button></li>
+              <li><a href="/portfolio/#home" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}>Home</a></li>
+              <li><a href="/portfolio/#about" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}>About</a></li>
+              <li><a href="/portfolio/#projects" onClick={(e) => { e.preventDefault(); handleNavClick('projects'); }}>Projects</a></li>
+              <li><a href="/portfolio/#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}>Contact</a></li>
+              <li><a href="https://www.github.com/sudh29" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/sudh29" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="mailto:sudhanshuiet15@gmail.com">Email</a></li>
             </ul>
-          </div>
-
-          <div className="footer-section">
-            <h4>Connect</h4>
-            <div className="social-links">
-              <a href="https://www.github.com/sudh29" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/sudh29" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="mailto:sudhanshuiet15@gmail.com">Email</a>
-            </div>
           </div>
         </div>
 

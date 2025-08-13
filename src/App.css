@@ -916,16 +916,17 @@ p {
   margin-bottom: 0;
 }
 
-.footer-links button {
+.footer-links a {
   background: none;
   border: none;
   color: #cbd5e0;
   cursor: pointer;
   transition: color 0.3s ease;
   font-size: 1rem;
+  text-decoration: none;
 }
 
-.footer-links button:hover {
+.footer-links a:hover {
   color: var(--accent-color);
 }
 
