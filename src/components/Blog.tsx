@@ -23,12 +23,6 @@ const Blog: React.FC = () => {
           ))}
         </div>
 
-        <div className="blog-cta">
-          <p>Interested in technical content and insights?</p>
-          <Link to="/#contact" className="btn btn-primary">
-            Get In Touch
-          </Link>
-        </div>
       </div>
     </section>
   )
