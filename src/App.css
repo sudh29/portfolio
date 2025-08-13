@@ -258,6 +258,12 @@ p {
   margin-left: 2rem;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .header-actions {
   display: flex;
   align-items: center;

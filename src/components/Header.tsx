@@ -77,68 +77,70 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
-            <ul className="nav-list">
-              {!isBlogPage && (
-                <>
-                  {sections.map((section) => (
-                    <li key={section}>
+          <div className="header-right">
+            <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
+              <ul className="nav-list">
+                {!isBlogPage && (
+                  <>
+                    {sections.map((section) => (
+                      <li key={section}>
+                        <button
+                          type="button"
+                          onClick={() => handleNavClick(section)}
+                          className={
+                            activeSection === section
+                              ? "nav-link active"
+                              : "nav-link"
+                          }
+                        >
+                          {section.charAt(0).toUpperCase() + section.slice(1)}
+                        </button>
+                      </li>
+                    ))}
+                    <li>
                       <button
                         type="button"
-                        onClick={() => handleNavClick(section)}
-                        className={
-                          activeSection === section
-                            ? "nav-link active"
-                            : "nav-link"
-                        }
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          navigate("/portfolio/blog/");
+                        }}
+                        className="nav-link"
                       >
-                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                        Blog
                       </button>
                     </li>
-                  ))}
-                  <li>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        navigate("/portfolio/blog/");
-                      }}
-                      className="nav-link"
-                    >
-                      Blog
-                    </button>
-                  </li>
-                </>
-              )}
-            </ul>
-          </nav>
+                  </>
+                )}
+              </ul>
+            </nav>
 
-          <div className="header-actions">
-            {isBlogPage && (
-              <button
-                type="button"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  navigate("/portfolio/blog/");
-                }}
-                className="nav-link active"
-              >
-                Blog
-              </button>
-            )}
-            <ThemeToggle />
-            {!isBlogPage && (
-              <button
-                className={`mobile-menu-btn ${
-                  isMobileMenuOpen ? "active" : ""
-                }`}
-                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
-            )}
+            <div className="header-actions">
+              {isBlogPage && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    navigate("/portfolio/blog/");
+                  }}
+                  className="nav-link active"
+                >
+                  Blog
+                </button>
+              )}
+              <ThemeToggle />
+              {!isBlogPage && (
+                <button
+                  className={`mobile-menu-btn ${
+                    isMobileMenuOpen ? "active" : ""
+                  }`}
+                  onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
