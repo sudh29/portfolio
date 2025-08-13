@@ -96,28 +96,37 @@ const Header: React.FC = () => {
                       </button>
                     </li>
                   ))}
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        navigate("/portfolio/blog/");
+                      }}
+                      className="nav-link"
+                    >
+                      Blog
+                    </button>
+                  </li>
                 </>
               )}
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    navigate("/portfolio/blog/");
-                  }}
-                  className={
-                    isBlogPage ? "nav-link active" : "nav-link"
-                  }
-                >
-                  Blog
-                </button>
-              </li>
             </ul>
           </nav>
 
           <div className="header-actions">
             <ThemeToggle />
-            {!isBlogPage && (
+            {isBlogPage ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  navigate("/portfolio/blog/");
+                }}
+                className="nav-link active"
+              >
+                Blog
+              </button>
+            ) : (
               <button
                 className={`mobile-menu-btn ${
                   isMobileMenuOpen ? "active" : ""
