@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -24,10 +24,34 @@ const Home: React.FC = () => (
   </>
 );
 
+const ScrollToHashElement = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const { hash } = location;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+          });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  return null;
+};
+
 function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
+        <ScrollToHashElement />
         <div className="App">
           <Header />
           <main>
