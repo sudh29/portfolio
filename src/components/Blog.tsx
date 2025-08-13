@@ -144,7 +144,7 @@ const Blog: React.FC = () => {
 
         <div className="blog-cta">
           <p>Interested in technical content and insights?</p>
-          <Link to="/portfolio/#contact" className="btn btn-primary">
+          <Link to="/#contact" className="btn btn-primary">
             Get In Touch
           </Link>
         </div>
