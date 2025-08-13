@@ -1,0 +1,119 @@
+/* Blog Page Specific Styles */
+.blog {
+  background-color: #f0f4f8; /* Light gray-blue background */
+  color: #1e293b; /* Dark slate text color */
+}
+
+.blog .section-header h2 {
+  color: #1e293b;
+}
+
+.blog .section-header p {
+  color: #475569;
+}
+
+.blog .blog-filters {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.blog .filter-btn {
+  background-color: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.blog .filter-btn:hover {
+  background-color: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+.blog .filter-btn.active {
+  background-color: #2563eb; /* Blue-600 */
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.blog .blog-card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog .blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+.blog .blog-image .featured-badge {
+  background-color: #db2777; /* Pink-600 */
+}
+
+.blog .blog-content {
+  padding: 1.5rem;
+}
+
+.blog .blog-category {
+  background-color: #e2e8f0;
+  color: #475569;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.blog .blog-title {
+  color: #1e293b;
+  margin-top: 0.75rem;
+}
+
+.blog .blog-excerpt {
+  color: #475569;
+  margin-top: 0.5rem;
+}
+
+.blog .blog-actions .btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.blog .blog-actions .btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.blog .blog-actions .btn-secondary {
+  background-color: transparent;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.blog .blog-actions .btn-secondary:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.blog .blog-cta {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 3rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.blog .blog-cta p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
