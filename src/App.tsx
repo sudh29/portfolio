@@ -11,6 +11,8 @@ const Skills = lazy(() => import("./components/Skills"));
 const Projects = lazy(() => import("./components/Projects"));
 const Contact = lazy(() => import("./components/Contact"));
 const Blog = lazy(() => import("./components/Blog"));
+const CategoryPage = lazy(() => import("./components/CategoryPage"));
+const BlogPostPage = lazy(() => import("./components/BlogPostPage"));
 
 const Home: React.FC = () => (
   <>
@@ -59,6 +61,8 @@ function App() {
               <Routes>
                 <Route path="/portfolio/" element={<Home />} />
                 <Route path="/portfolio/blog/" element={<Blog />} />
+                <Route path="/portfolio/blog/:categorySlug" element={<CategoryPage />} />
+                <Route path="/portfolio/blog/:categorySlug/:postSlug" element={<BlogPostPage />} />
               </Routes>
             </Suspense>
           </main>
