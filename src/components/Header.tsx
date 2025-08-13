@@ -78,37 +78,41 @@ const Header: React.FC = () => {
           </div>
 
           <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
-            {!isBlogPage && (
-              <ul className="nav-list">
-                {sections.map((section) => (
-                  <li key={section}>
-                    <button
-                      type="button"
-                      onClick={() => handleNavClick(section)}
-                      className={
-                        activeSection === section
-                          ? "nav-link active"
-                          : "nav-link"
-                      }
-                    >
-                      {section.charAt(0).toUpperCase() + section.slice(1)}
-                    </button>
-                  </li>
-                ))}
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      navigate("/portfolio/blog/");
-                    }}
-                    className="nav-link"
-                  >
-                    Blog
-                  </button>
-                </li>
-              </ul>
-            )}
+            <ul className="nav-list">
+              {!isBlogPage && (
+                <>
+                  {sections.map((section) => (
+                    <li key={section}>
+                      <button
+                        type="button"
+                        onClick={() => handleNavClick(section)}
+                        className={
+                          activeSection === section
+                            ? "nav-link active"
+                            : "nav-link"
+                        }
+                      >
+                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                      </button>
+                    </li>
+                  ))}
+                </>
+              )}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    navigate("/portfolio/blog/");
+                  }}
+                  className={
+                    isBlogPage ? "nav-link active" : "nav-link"
+                  }
+                >
+                  Blog
+                </button>
+              </li>
+            </ul>
           </nav>
 
           <div className="header-actions">
