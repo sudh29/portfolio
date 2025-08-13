@@ -389,7 +389,18 @@ p {
 
 .section-header h2 {
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.blog-subline {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.blog-instruction {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
 }
 
 .section-header p {

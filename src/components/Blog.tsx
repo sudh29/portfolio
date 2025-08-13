@@ -11,8 +11,8 @@ const Blog: React.FC = () => {
       <div className="container">
         <div className="section-header">
           <h2>Cloud & Clear</h2>
-          <p>Demystifying Tech, One Post at a Time</p>
-          <p>Choose a category to see the list of articles.</p>
+          <p className="blog-subline">Demystifying Tech, One Post at a Time</p>
+          <p className="blog-instruction">Choose a category to see the list of articles.</p>
         </div>
 
         <div className="category-grid">
