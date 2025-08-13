@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 import './Blog.css'
 
 interface BlogPost {
@@ -144,9 +144,9 @@ const Blog: React.FC = () => {
 
         <div className="blog-cta">
           <p>Interested in technical content and insights?</p>
-          <Link to="/portfolio/#contact" className="btn btn-primary">
+          <HashLink smooth to="/portfolio/#contact" className="btn btn-primary">
             Get In Touch
-          </Link>
+          </HashLink>
         </div>
       </div>
     </section>
