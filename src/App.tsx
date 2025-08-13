@@ -41,7 +41,7 @@ const ScrollToHashElement = () => {
             block: 'start',
             inline: 'nearest',
           });
-        }, 100);
+        }, 500);
       }
     }
   }, [location]);

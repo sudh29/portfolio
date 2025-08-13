@@ -11,25 +11,25 @@ const Header: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Scroll handler to highlight active section
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
-
-    for (const section of sections) {
-      const el = document.getElementById(section);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 100 && rect.bottom >= 100) {
-          setActiveSection(section);
-          break;
+    if (!location.pathname.includes("blog")) {
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
         }
       }
     }
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // trigger on mount
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -54,12 +54,13 @@ const Header: React.FC = () => {
       if (isPortfolioPage) {
         scrollToSection(sectionId);
       } else {
-        // Navigate to portfolio home, then scroll
         window.location.href = `/portfolio/#${sectionId}`;
       }
     },
     [location.pathname, scrollToSection]
   );
+
+  const isBlogPage = location.pathname.includes("blog");
 
   return (
     <header className={`header ${isScrolled ? "scrolled" : ""}`}>
@@ -76,51 +77,70 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
-            <ul className="nav-list">
-              {sections.map((section) => (
-                <li key={section}>
-                  <button
-                    type="button"
-                    onClick={() => handleNavClick(section)}
-                    className={
-                      activeSection === section ? "nav-link active" : "nav-link"
-                    }
-                  >
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </button>
-                </li>
-              ))}
+          <div className="header-right">
+            <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
+              <ul className="nav-list">
+                {!isBlogPage && (
+                  <>
+                    {sections.map((section) => (
+                      <li key={section}>
+                        <button
+                          type="button"
+                          onClick={() => handleNavClick(section)}
+                          className={
+                            activeSection === section
+                              ? "nav-link active"
+                              : "nav-link"
+                          }
+                        >
+                          {section.charAt(0).toUpperCase() + section.slice(1)}
+                        </button>
+                      </li>
+                    ))}
+                    <li>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          navigate("/portfolio/blog/");
+                        }}
+                        className="nav-link"
+                      >
+                        Blog
+                      </button>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </nav>
 
-              <li>
+            <div className="header-actions">
+              {isBlogPage && (
                 <button
                   type="button"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     navigate("/portfolio/blog/");
                   }}
-                  className={
-                    location.pathname.includes("blog")
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
+                  className="nav-link active"
                 >
                   Blog
                 </button>
-              </li>
-            </ul>
-          </nav>
-
-          <div className="header-actions">
-            <ThemeToggle />
-            <button
-              className={`mobile-menu-btn ${isMobileMenuOpen ? "active" : ""}`}
-              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
+              )}
+              <ThemeToggle />
+              {!isBlogPage && (
+                <button
+                  className={`mobile-menu-btn ${
+                    isMobileMenuOpen ? "active" : ""
+                  }`}
+                  onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
