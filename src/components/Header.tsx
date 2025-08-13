@@ -92,22 +92,20 @@ const Header: React.FC = () => {
                 </li>
               ))}
 
-              <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    navigate("/portfolio/blog/");
-                  }}
-                  className={
-                    location.pathname.includes("blog")
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                >
-                  Blog
-                </button>
-              </li>
+              {!location.pathname.includes("blog") && (
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      navigate("/portfolio/blog/");
+                    }}
+                    className="nav-link"
+                  >
+                    Blog
+                  </button>
+                </li>
+              )}
             </ul>
           </nav>
 
