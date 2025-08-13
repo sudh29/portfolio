@@ -11,7 +11,6 @@ const Header: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Scroll handler to highlight active section
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
 
@@ -29,7 +28,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // trigger on mount
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -54,72 +53,87 @@ const Header: React.FC = () => {
       if (isPortfolioPage) {
         scrollToSection(sectionId);
       } else {
-        // Navigate to portfolio home, then scroll
         window.location.href = `/portfolio/#${sectionId}`;
       }
     },
     [location.pathname, scrollToSection]
   );
 
+  const isBlogPage = location.pathname.includes("blog");
+
   return (
     <header className={`header ${isScrolled ? "scrolled" : ""}`}>
       <div className="container">
         <div className="header-content">
-          <div className="logo">
-            <button
-              type="button"
-              onClick={() => handleNavClick("home")}
-              className="nav-link logo-button"
-              aria-label="Sudhanshu Chaudhary - Home"
-            >
-              <h2>Sudhanshu Chaudhary</h2>
-            </button>
-          </div>
+          {isBlogPage ? (
+            <>
+              <div className="blog-header-title">
+                <h1>Sudhanshu’s Tech Sphere – Exploring ideas, tools, and trends.</h1>
+              </div>
+              <div className="header-actions">
+                <ThemeToggle />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="logo">
+                <button
+                  type="button"
+                  onClick={() => handleNavClick("home")}
+                  className="nav-link logo-button"
+                  aria-label="Sudhanshu Chaudhary - Home"
+                >
+                  <h2>Sudhanshu Chaudhary</h2>
+                </button>
+              </div>
 
-          <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
-            <ul className="nav-list">
-              {sections.map((section) => (
-                <li key={section}>
-                  <button
-                    type="button"
-                    onClick={() => handleNavClick(section)}
-                    className={
-                      activeSection === section ? "nav-link active" : "nav-link"
-                    }
-                  >
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </button>
-                </li>
-              ))}
+              <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
+                <ul className="nav-list">
+                  {sections.map((section) => (
+                    <li key={section}>
+                      <button
+                        type="button"
+                        onClick={() => handleNavClick(section)}
+                        className={
+                          activeSection === section
+                            ? "nav-link active"
+                            : "nav-link"
+                        }
+                      >
+                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                      </button>
+                    </li>
+                  ))}
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        navigate("/portfolio/blog/");
+                      }}
+                      className="nav-link"
+                    >
+                      Blog
+                    </button>
+                  </li>
+                </ul>
+              </nav>
 
-              {!location.pathname.includes("blog") && (
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      navigate("/portfolio/blog/");
-                    }}
-                    className="nav-link"
-                  >
-                    Blog
-                  </button>
-                </li>
-              )}
-            </ul>
-          </nav>
-
-          <div className="header-actions">
-            <ThemeToggle />
-            <button
-              className={`mobile-menu-btn ${isMobileMenuOpen ? "active" : ""}`}
-              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
+              <div className="header-actions">
+                <ThemeToggle />
+                <button
+                  className={`mobile-menu-btn ${
+                    isMobileMenuOpen ? "active" : ""
+                  }`}
+                  onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </header>
