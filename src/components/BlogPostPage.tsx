@@ -22,18 +22,23 @@ const BlogPostPage: React.FC = () => {
   return (
     <article className="blog-post-page">
       <div className="container">
-        <header className="post-header">
-          <h1>{post.title}</h1>
-          <p className="post-category">
-            In category: <Link to={`/portfolio/blog/${category.slug}`}>{category.name}</Link>
-          </p>
-        </header>
-        <div className="post-content">
-          {/* This is a simple way to render content. For a real blog, you'd want a Markdown parser. */}
-          {post.content.split('\\n').map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+        <div className="post-navigation">
+          <Link to="/portfolio/blog" className="back-to-blog">
+            ← Back to Blog
+          </Link>
+          <Link to={`/portfolio/blog/${category.slug}`} className="back-to-category">
+            ← Back to {category.name}
+          </Link>
         </div>
+        
+        <div className="post-category-info">
+          <p>In category: <Link to={`/portfolio/blog/${category.slug}`}>{category.name}</Link></p>
+        </div>
+        
+        <div 
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: post.content || '' }}
+        />
       </div>
     </article>
   );
