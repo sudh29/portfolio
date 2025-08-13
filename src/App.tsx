@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -11,6 +11,8 @@ const Skills = lazy(() => import("./components/Skills"));
 const Projects = lazy(() => import("./components/Projects"));
 const Contact = lazy(() => import("./components/Contact"));
 const Blog = lazy(() => import("./components/Blog"));
+const CategoryPage = lazy(() => import("./components/CategoryPage"));
+const BlogPostPage = lazy(() => import("./components/BlogPostPage"));
 
 const Home: React.FC = () => (
   <>
@@ -24,10 +26,34 @@ const Home: React.FC = () => (
   </>
 );
 
+const ScrollToHashElement = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const { hash } = location;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+          });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  return null;
+};
+
 function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
+        <ScrollToHashElement />
         <div className="App">
           <Header />
           <main>
@@ -35,6 +61,8 @@ function App() {
               <Routes>
                 <Route path="/portfolio/" element={<Home />} />
                 <Route path="/portfolio/blog/" element={<Blog />} />
+                <Route path="/portfolio/blog/:categorySlug" element={<CategoryPage />} />
+                <Route path="/portfolio/blog/:categorySlug/:postSlug" element={<BlogPostPage />} />
               </Routes>
             </Suspense>
           </main>
