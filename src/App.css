@@ -227,6 +227,11 @@ p {
   font-weight: 700;
 }
 
+.logo-button {
+  padding: 0 !important;
+  text-align: left;
+}
+
 .nav-list {
   display: flex;
   list-style: none;
