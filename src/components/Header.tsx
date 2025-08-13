@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 
 const sections = ["home", "about", "skills", "projects", "contact"];
@@ -9,6 +9,7 @@ const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Scroll handler to highlight active section
   const handleScroll = useCallback(() => {
@@ -89,7 +90,7 @@ const Header: React.FC = () => {
                   type="button"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    window.location.href = "/portfolio/blog/";
+                    navigate("/portfolio/blog/");
                   }}
                   className={
                     location.pathname.includes("blog")
