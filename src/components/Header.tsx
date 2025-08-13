@@ -13,18 +13,19 @@ const Header: React.FC = () => {
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
-
-    for (const section of sections) {
-      const el = document.getElementById(section);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 100 && rect.bottom >= 100) {
-          setActiveSection(section);
-          break;
+    if (!location.pathname.includes("blog")) {
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
         }
       }
     }
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -65,75 +66,66 @@ const Header: React.FC = () => {
     <header className={`header ${isScrolled ? "scrolled" : ""}`}>
       <div className="container">
         <div className="header-content">
-          {isBlogPage ? (
-            <>
-              <div className="blog-header-title">
-                <h1>Sudhanshu’s Tech Sphere – Exploring ideas, tools, and trends.</h1>
-              </div>
-              <div className="header-actions">
-                <ThemeToggle />
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="logo">
-                <button
-                  type="button"
-                  onClick={() => handleNavClick("home")}
-                  className="nav-link logo-button"
-                  aria-label="Sudhanshu Chaudhary - Home"
-                >
-                  <h2>Sudhanshu Chaudhary</h2>
-                </button>
-              </div>
+          <div className="logo">
+            <button
+              type="button"
+              onClick={() => handleNavClick("home")}
+              className="nav-link logo-button"
+              aria-label="Sudhanshu Chaudhary - Home"
+            >
+              <h2>Sudhanshu Chaudhary</h2>
+            </button>
+          </div>
 
-              <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
-                <ul className="nav-list">
-                  {sections.map((section) => (
-                    <li key={section}>
-                      <button
-                        type="button"
-                        onClick={() => handleNavClick(section)}
-                        className={
-                          activeSection === section
-                            ? "nav-link active"
-                            : "nav-link"
-                        }
-                      >
-                        {section.charAt(0).toUpperCase() + section.slice(1)}
-                      </button>
-                    </li>
-                  ))}
-                  <li>
+          <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
+            {!isBlogPage && (
+              <ul className="nav-list">
+                {sections.map((section) => (
+                  <li key={section}>
                     <button
                       type="button"
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        navigate("/portfolio/blog/");
-                      }}
-                      className="nav-link"
+                      onClick={() => handleNavClick(section)}
+                      className={
+                        activeSection === section
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
                     >
-                      Blog
+                      {section.charAt(0).toUpperCase() + section.slice(1)}
                     </button>
                   </li>
-                </ul>
-              </nav>
+                ))}
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      navigate("/portfolio/blog/");
+                    }}
+                    className="nav-link"
+                  >
+                    Blog
+                  </button>
+                </li>
+              </ul>
+            )}
+          </nav>
 
-              <div className="header-actions">
-                <ThemeToggle />
-                <button
-                  className={`mobile-menu-btn ${
-                    isMobileMenuOpen ? "active" : ""
-                  }`}
-                  onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-                >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button>
-              </div>
-            </>
-          )}
+          <div className="header-actions">
+            <ThemeToggle />
+            {!isBlogPage && (
+              <button
+                className={`mobile-menu-btn ${
+                  isMobileMenuOpen ? "active" : ""
+                }`}
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </header>

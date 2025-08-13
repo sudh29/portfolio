@@ -10,8 +10,7 @@ const Blog: React.FC = () => {
     <section id="blog" className="blog">
       <div className="container">
         <div className="section-header">
-          <h2>Tech Blueprint</h2>
-          <p>Choose a category to see the list of articles.</p>
+          <h2>Tech Blueprint – Exploring Ideas, Tools, and Trends</h2>
         </div>
 
         <div className="category-grid">
