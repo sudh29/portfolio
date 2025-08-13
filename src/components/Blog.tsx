@@ -12,8 +12,9 @@ const Blog: React.FC = () => {
         <div className="section-header">
           <h2>Cloud & Clear</h2>
           <p className="blog-subline">Demystifying Tech, One Post at a Time</p>
-          <p className="blog-instruction">Choose a category to see the list of articles.</p>
         </div>
+
+        <p className="blog-instruction">Choose a category to see the list of articles.</p>
 
         <div className="category-grid">
           {categories.map(category => (
