@@ -10,9 +10,11 @@ const Blog: React.FC = () => {
     <section id="blog" className="blog">
       <div className="container">
         <div className="section-header">
-          <h2>Technical Blog</h2>
-          <p>Choose a category to see the list of articles.</p>
+          <h2>Cloud & Clear</h2>
+          <p className="blog-subline">Demystifying Tech, One Post at a Time</p>
         </div>
+
+        <p className="blog-instruction">Choose a category to see the list of articles.</p>
 
         <div className="category-grid">
           {categories.map(category => (
@@ -23,12 +25,6 @@ const Blog: React.FC = () => {
           ))}
         </div>
 
-        <div className="blog-cta">
-          <p>Interested in technical content and insights?</p>
-          <Link to="/#contact" className="btn btn-primary">
-            Get In Touch
-          </Link>
-        </div>
       </div>
     </section>
   )

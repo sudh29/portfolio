@@ -81,5 +81,29 @@ export const blogData: BlogData = {
       name: 'Machine Learning',
       slug: 'machine-learning',
       posts: []
+  },
+  'database': {
+    name: 'Database',
+    slug: 'database',
+    posts: [
+      {
+        slug: 'sql',
+        title: 'SQL',
+        excerpt: 'A deep dive into the most popular query language for relational databases.',
+        content: 'SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)...'
+      },
+      {
+        slug: 'nosql',
+        title: 'NoSQL',
+        excerpt: 'Exploring the world of non-relational databases.',
+        content: 'A NoSQL (originally referring to "non-SQL" or "non-relational") database provides a mechanism for storage and retrieval of data that is modeled in means other than the tabular relations used in relational databases...'
+      },
+      {
+        slug: 'vector-databases',
+        title: 'Vector Databases',
+        excerpt: 'Understanding the databases that power AI applications.',
+        content: 'Vector databases are a type of database that stores data as high-dimensional vectors, which are mathematical representations of features or attributes. These databases are optimized for similarity search, which is the process of finding the most similar items to a given query item...'
+      }
+    ]
   }
 };
