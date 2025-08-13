@@ -66,7 +66,14 @@ const Header: React.FC = () => {
       <div className="container">
         <div className="header-content">
           <div className="logo">
-            <h2>Sudhanshu Chaudhary</h2>
+            <button
+              type="button"
+              onClick={() => handleNavClick("home")}
+              className="nav-link logo-button"
+              aria-label="Sudhanshu Chaudhary - Home"
+            >
+              <h2>Sudhanshu Chaudhary</h2>
+            </button>
           </div>
 
           <nav className={`nav ${isMobileMenuOpen ? "nav-open" : ""}`}>
